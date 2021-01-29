@@ -3,7 +3,7 @@ import smtplib
 
 from email.message import EmailMessage
 
-
+# add into enironmental variables of the respective systems
 EMAIL_ADDRESS = os.environ.get('EMAIL_USER')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 
