@@ -8,11 +8,11 @@ EMAIL_ADDRESS = os.environ.get('EMAIL_USER')
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
-msg = EmailMessage()
-msg['Subject'] = "csv file working?"
-msg['From'] = EMAIL_ADDRESS
-msg['To'] = 'facerecognition2021@gmail.com'
-msg.set_content('phase-1 working properly or not')
+new_msg = EmailMessage()
+new_msg['Subject'] = "csv file working?"
+new_msg['From'] = EMAIL_ADDRESS
+new_msg['To'] = 'facerecognition2021@gmail.com'
+new_msg.set_content('phase-1 working properly or not')
 
 # adding file in al list in order to access the file
 
@@ -23,12 +23,12 @@ for file in Files:
         file_data = f.read()
         file_name = f.name
 
-        msg.add_attachment(file_data, maintype='application',
-                           subtype='octet-stream', filename=file_name)
+        new_msg.add_attachment(file_data, maintype='application',
+                               subtype='octet-stream', filename=file_name)
 
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
     smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
 
-    smtp.send_message(msg)
+    smtp.send_message(new_msg)
     print("succesfull message sent to the respective email")
